@@ -15,18 +15,20 @@ const notFoundMiddleware = require('./middleware/not-found');
 // incase of...There are an error
 const errorHandlerMiddleware = require('./middleware/error-handler');
 
-//middleware...implementation the routes
-app.use('/api/v1/', mainRouter);
 
 //middleware..."present files"
-app.use(express.static('./public'));
+app.use(express.static('./public/'));
 //middleware...to use req.body
 app.use(express.json());
+
+//middleware...implementation the routes
+app.use('/api/v1/', mainRouter);
 
 // middleware...incase of route isn't found__implementation
 app.use(notFoundMiddleware);
 // middleware...incase of there are an error__implementation
 app.use(errorHandlerMiddleware);
+
 
 const port = process.env.PORT || 5000;
 
