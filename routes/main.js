@@ -6,10 +6,12 @@ const {
  login,
  dashboard
 } = require('../controllers/main');
+//importing authenticationMiddleware
+const authMiddleware = require('../middleware/auth')
 
 // making the routes
-router.route('/dashboard').get(dashboard);
 router.route('/login').post(login)
+router.route('/dashboard').get(authMiddleware, dashboard);
 
 //exporting the routes to app.js
 module.exports = router;
