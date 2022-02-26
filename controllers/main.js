@@ -8,8 +8,9 @@
 //importing the JWT_package
 const jwt = require('jsonwebtoken');
 
-//importing the customError
-const CustomAPIError = require('../errors/custom-error')
+
+//importing the BadRequestError
+const CustomError = require('../errors/custom-error')
 
 //Post_HttpRequest-Function
 const login = async (req, res) => {
@@ -22,7 +23,7 @@ const login = async (req, res) => {
   //check in the controller
 
   if (!username || !password) {
-    throw new CustomAPIError('Please Provide email and password', 400)
+    throw new CustomError('Please Provide email and password', 400)
   }
 
   //just for demo, normally provided by DB!!!!
